@@ -37,7 +37,54 @@ function App() {
           <button type = "submit">Salvar</button>
         </form>
       </aside>
-      <main></main>
+      <main>
+        <ul>
+          <li className = "dev-item">
+            <header>
+              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
+              <div className = "user-info">
+                <strong> Jessica Costa de Jesus </strong>
+                <span> NodeJS, ReactJS, MongoDB </span>
+              </div>
+            </header>
+            <p>Geographer | GIS Analyst | Back End Dev Student</p>
+            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
+          </li>
+          <li className = "dev-item">
+            <header>
+              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
+              <div className = "user-info">
+                <strong> Jessica Costa de Jesus </strong>
+                <span> NodeJS, ReactJS, MongoDB </span>
+              </div>
+            </header>
+            <p>Geographer | GIS Analyst | Back End Dev Student</p>
+            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
+          </li>
+          <li className = "dev-item">
+            <header>
+              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
+              <div className = "user-info">
+                <strong> Jessica Costa de Jesus </strong>
+                <span> NodeJS, ReactJS, MongoDB </span>
+              </div>
+            </header>
+            <p>Geographer | GIS Analyst | Back End Dev Student</p>
+            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
+          </li>
+          <li className = "dev-item">
+            <header>
+              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
+              <div className = "user-info">
+                <strong> Jessica Costa de Jesus </strong>
+                <span> NodeJS, ReactJS, MongoDB </span>
+              </div>
+            </header>
+            <p>Geographer | GIS Analyst | Back End Dev Student</p>
+            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
+          </li>
+        </ul>
+      </main>
     </div>
     
   );

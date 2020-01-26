@@ -1,93 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
+import api from './services/api.js'
 
-import './global.css';
-import './app.css';
-import './sidebar.css';
+import './global.css'
+import './app.css'
+import './sidebar.css'
+import './main.css'
+
+
+import DevForm from './components/DevForm/index.js'
+import DevItem from './components/DevItem/index.js'
 
 function App() {
+    const [devs, setDevs] = useState([])
 
+    useEffect(() => {
+        async function loadDevs() {
+            const response = await api.get('/devs')
 
-  return (
-    <div id = 'app'>
-      <aside>
-        <strong>Cadastrar</strong>
-        <form>
-          <div class = "input block">
-          <label htmlFor = "">Usuário do GitHub</label>
-          <input name = "github_user" id = "user_github" required />
-          </div>
+            setDevs(response.data)
+        }
 
-          <div class = "input block">
-          <label htmlFor = "tecnologias">Tecnologias</label>
-          <input name = "tecnologias" id = "tecnologias" required />
-          </div>
+        loadDevs()
+    }, [])
 
-          <div className = "input-group">
-            <div class = "input-block">
-              <label htmlFor = "latitude">Latitude</label>
-              <input name = "latitude" id = "latitude" required />
-            </div>
+    async function handleAddDev(data) {
+        const response = await api.post('/devs', data)
 
-            <div class = "input-block">
-              <label htmlFor = "longitude">Longitude</label>
-              <input name = "longitude" id = "longitude" required />
-            </div>
-          </div>
-          
-          <button type = "submit">Salvar</button>
-        </form>
-      </aside>
-      <main>
-        <ul>
-          <li className = "dev-item">
-            <header>
-              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
-              <div className = "user-info">
-                <strong> Jessica Costa de Jesus </strong>
-                <span> NodeJS, ReactJS, MongoDB </span>
-              </div>
-            </header>
-            <p>Geographer | GIS Analyst | Back End Dev Student</p>
-            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
-          </li>
-          <li className = "dev-item">
-            <header>
-              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
-              <div className = "user-info">
-                <strong> Jessica Costa de Jesus </strong>
-                <span> NodeJS, ReactJS, MongoDB </span>
-              </div>
-            </header>
-            <p>Geographer | GIS Analyst | Back End Dev Student</p>
-            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
-          </li>
-          <li className = "dev-item">
-            <header>
-              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
-              <div className = "user-info">
-                <strong> Jessica Costa de Jesus </strong>
-                <span> NodeJS, ReactJS, MongoDB </span>
-              </div>
-            </header>
-            <p>Geographer | GIS Analyst | Back End Dev Student</p>
-            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
-          </li>
-          <li className = "dev-item">
-            <header>
-              <img src = "https://avatars1.githubusercontent.com/u/42447794?s=460&v=4" alt = "Jessica Costa"/>
-              <div className = "user-info">
-                <strong> Jessica Costa de Jesus </strong>
-                <span> NodeJS, ReactJS, MongoDB </span>
-              </div>
-            </header>
-            <p>Geographer | GIS Analyst | Back End Dev Student</p>
-            <a href = "https://github.com/jessicacj">Acessar perfil no GitHub</a>
-          </li>
-        </ul>
-      </main>
-    </div>
-    
-  );
+        setDevs([...devs, response.data])
+    }
+
+    return (
+        <div id="app">
+            <aside>
+                <strong>Cadastrar</strong>
+                <DevForm onSubmit={handleAddDev} />
+            </aside>
+            <main>
+                <ul>
+                    {devs.map(dev => (
+                        <DevItem key={dev._id} dev={dev}/>
+                    ))}
+
+                </ul>
+            </main>
+        </div>
+    )
 }
 
-export default App;
+export default App
